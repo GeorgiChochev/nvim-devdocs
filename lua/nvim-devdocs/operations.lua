@@ -253,6 +253,9 @@ end
 ---@param float boolean
 M.open = function(entry, bufnr, float)
   vim.api.nvim_buf_set_option(bufnr, "modifiable", false)
+  
+  -- Store the buffer for potential reuse
+  state.set("preview_buf_id", bufnr)
 
   if not float then
     vim.api.nvim_set_current_buf(bufnr)

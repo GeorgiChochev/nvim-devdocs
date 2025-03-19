@@ -5,7 +5,7 @@ local path = require("plenary.path")
 ---@class nvim_devdocs.Config
 local default = {
   dir_path = vim.fn.stdpath("data") .. "/devdocs",
-  telescope = {},
+  snacks = {}, -- passed to Snacks.picker
   filetypes = {},
   float_win = {
     relative = "editor",

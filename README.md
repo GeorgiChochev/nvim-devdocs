@@ -1,6 +1,6 @@
 # nvim-devdocs
 
-nvim-devdocs is a plugin which brings [DevDocs](https://devdocs.io) documentations into neovim. Install, search and preview documentations directly inside neovim in markdown format with telescope integration. You can also use custom commands like [glow](https://github.com/charmbracelet/glow) to render the markdown for a better experience.
+nvim-devdocs is a plugin which brings [DevDocs](https://devdocs.io) documentations into neovim. Install, search and preview documentations directly inside neovim in markdown format with Snacks.picker integration. You can also use custom commands like [glow](https://github.com/charmbracelet/glow) to render the markdown for a better experience.
 
 ## Preview
 
@@ -14,7 +14,7 @@ Using [glow](https://github.com/charmbracelet/glow) for rendering markdown:
 
 - Offline usage.
 
-- Search using Telescope.
+- Search using Snacks.picker.
 
 - Markdown rendering using custom commands.
 
@@ -31,7 +31,7 @@ return {
   "luckasRanarison/nvim-devdocs",
   dependencies = {
     "nvim-lua/plenary.nvim",
-    "nvim-telescope/telescope.nvim",
+    "LucasTavaresA/Snacks.nvim",  -- Required for picker functionality
     "nvim-treesitter/nvim-treesitter",
   },
   opts = {}
@@ -45,7 +45,7 @@ use {
   "luckasRanarison/nvim-devdocs",
   requires = {
     "nvim-lua/plenary.nvim",
-    "nvim-telescope/telescope.nvim",
+    "LucasTavaresA/Snacks.nvim",  -- Required for picker functionality
     "nvim-treesitter/nvim-treesitter",
   },
   config = function()
@@ -71,7 +71,7 @@ Here is the default configuration:
 ```lua
 {
   dir_path = vim.fn.stdpath("data") .. "/devdocs", -- installation directory
-  telescope = {}, -- passed to the telescope picker
+  snacks = {}, -- passed to the Snacks.picker
   filetypes = {
     -- extends the filetype to docs mappings used by the `DevdocsOpenCurrent` command, the version doesn't have to be specified
     -- scss = "sass",
@@ -116,7 +116,7 @@ Available commands:
 - `DevdocsUpdate`: Update documentation, 0-n args.
 - `DevdocsUpdateAll`: Update all documentations.
 
-Commands support completion, and the Telescope picker will be used when no argument is provided.
+Commands support completion, and the Snacks picker will be used when no argument is provided.
 
 ## Lifecycle Hook
 
