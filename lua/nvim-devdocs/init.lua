@@ -106,10 +106,7 @@ end
 M.setup = function(opts)
   config.setup(opts)
 
-  vim.defer_fn(function()
-    log.debug("Installing required docs")
-    operations.install_args(config.options.ensure_installed)
-  end, 3000)
+  vim.defer_fn(function() operations.install_args(config.options.ensure_installed) end, 3000)
 
   local cmd = vim.api.nvim_create_user_command
 
@@ -124,8 +121,6 @@ M.setup = function(opts)
   cmd("DevdocsUpdate", M.update, { nargs = "*", complete = completion.get_updatable })
   cmd("DevdocsUpdateAll", M.update_all, {})
   cmd("DevdocsToggle", M.toggle, {})
-
-  log.debug("Plugin initialized")
 end
 
 return M
